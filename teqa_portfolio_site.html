@@ -6,22 +6,27 @@
 <title>TEQA | Thiago Antonio - QA Engineer</title>
 
 <style>
-
 *{box-sizing:border-box}
 
 body{
   font-family:Arial, Helvetica, sans-serif;
   margin:0;
-  background:linear-gradient(180deg,#020617,#0f172a);
+  background:#020617;
   color:white;
   scroll-behavior:smooth;
+  overflow-x:hidden;
 }
 
-/* HEADER */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
 header{
-  padding:60px 20px;
+  padding:70px 20px;
   text-align:center;
-  background:#020617;
   border-bottom:1px solid #1e293b;
   animation:fadeDown 1s ease;
 }
@@ -68,7 +73,7 @@ nav a:hover::after{
 }
 
 section{
-  max-width:900px;
+  max-width:950px;
   margin:auto;
   padding:60px 20px;
   opacity:0;
@@ -81,7 +86,6 @@ section.visible{
   transform:translateY(0);
 }
 
-/* CARDS */
 .card{
   background:#020617;
   padding:25px;
@@ -94,10 +98,9 @@ section.visible{
 .card:hover{
   transform:translateY(-6px) scale(1.02);
   border-color:#38bdf8;
-  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
-/* SKILLS */
 .skills span{
   display:inline-block;
   background:#1e293b;
@@ -114,7 +117,53 @@ section.visible{
   transform:scale(1.1);
 }
 
-/* BUTTON */
+.stats{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.stat{
+  flex:1;
+  min-width:150px;
+  background:#020617;
+  border:1px solid #1e293b;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+}
+
+.stat h3{
+  margin:0;
+  font-size:32px;
+  color:#38bdf8;
+}
+
+.progress{
+  margin-top:15px;
+}
+
+.progress label{
+  font-size:14px;
+}
+
+.bar{
+  height:8px;
+  background:#1e293b;
+  border-radius:10px;
+  margin-top:4px;
+  overflow:hidden;
+}
+
+.bar span{
+  display:block;
+  height:100%;
+  background:#38bdf8;
+  width:0;
+  animation:loadBar 2s forwards;
+}
+
 .button{
   display:inline-block;
   margin-top:20px;
@@ -132,31 +181,27 @@ section.visible{
   box-shadow:0 0 15px #38bdf8;
 }
 
-/* FOOTER */
 footer{
   text-align:center;
   padding:30px;
-  background:#020617;
   border-top:1px solid #1e293b;
   margin-top:40px;
 }
 
-/* ANIMATIONS */
 @keyframes fadeDown{
-  from{
-    opacity:0;
-    transform:translateY(-20px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{opacity:0;transform:translateY(-20px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
+@keyframes loadBar{
+  from{width:0}
+}
 </style>
 </head>
 
 <body>
+
+<canvas id="bg"></canvas>
 
 <header>
 <h1>TEQA</h1>
@@ -170,108 +215,105 @@ footer{
 </nav>
 </header>
 
-<section id="sobre" class="reveal">
+<section id="sobre">
 <h2>Sobre Mim</h2>
 
 <p>
-Olá! Meu nome é Thiago Antonio e sou focado em Quality Assurance (QA).
-Meu objetivo é garantir qualidade, estabilidade e confiabilidade em sistemas de software.
+Olá! Meu nome é Thiago Antonio e sou focado em Quality Assurance (QA). Meu objetivo é garantir qualidade, estabilidade e confiabilidade em sistemas de software.
 </p>
 
 <p>
 Tenho experiência com testes manuais, testes de API, análise de bugs e automação de testes.
-Também possuo conhecimento em desenvolvimento, o que me ajuda a entender melhor a arquitetura dos sistemas.
 </p>
 
-</section>
+<div class="stats">
 
-<section id="projetos" class="reveal">
-<h2>Projetos de QA</h2>
-
-<div class="card">
-<h3>Teste Completo de Aplicação Web</h3>
-
-<p>Projeto focado em testes manuais de um sistema web.</p>
-
-<ul>
-<li>Criação de plano de testes</li>
-<li>Casos de teste</li>
-<li>Relatórios de bug</li>
-<li>Testes exploratórios</li>
-</ul>
-
-<p><b>Ferramentas:</b> Jira, TestRail</p>
+<div class="stat">
+<h3>120+</h3>
+<p>Test Cases</p>
 </div>
 
-<div class="card">
-<h3>Automação de Testes de Login</h3>
-
-<p>Automação de testes para validação de sistema de autenticação.</p>
-
-<ul>
-<li>Teste de login válido</li>
-<li>Teste de login inválido</li>
-<li>Validação de mensagens de erro</li>
-</ul>
-
-<p><b>Tecnologias:</b> Selenium, Java</p>
+<div class="stat">
+<h3>30+</h3>
+<p>Automated Tests</p>
 </div>
 
-<div class="card">
-<h3>Testes de API REST</h3>
+<div class="stat">
+<h3>14</h3>
+<p>Bugs Encontrados</p>
+</div>
 
-<ul>
-<li>Validação de status code</li>
-<li>Validação de resposta JSON</li>
-<li>Testes de autenticação</li>
-</ul>
+<div class="stat">
+<h3>85%</h3>
+<p>Test Coverage</p>
+</div>
 
-<p><b>Ferramentas:</b> Postman</p>
 </div>
 
 </section>
 
-<section id="skills" class="reveal">
+<section id="projetos">
+<h2>Projetos</h2>
+
+<div class="card">
+<h3>Jogo do Número Secreto</h3>
+<p>Projeto em JavaScript onde o usuário tenta descobrir um número secreto gerado pelo sistema. Utilizado para praticar lógica de programação e interação com o usuário.</p>
+<a class="button" href="https://github.com/Tecozada/Jogo-Do-Numero-Secreto" target="_blank">Ver Projeto</a>
+</div>
+
+<div class="card">
+<h3>Portal de Profissionais UAM</h3>
+<p>Sistema desenvolvido para centralizar informações de profissionais. Projeto focado em estrutura de sistema web e organização de dados.</p>
+<a class="button" href="https://github.com/Tecozada/portal-profissionaisUAM" target="_blank">Ver Projeto</a>
+</div>
+
+<div class="card">
+<h3>Sistema de Agendamento de Consultas</h3>
+<p>Projeto acadêmico desenvolvido em Java para gerenciamento de agendamentos de consultas médicas, aplicando conceitos de sistemas distribuídos e organização de serviços.</p>
+<a class="button" href="https://github.com/Tecozada/src-main-java-com-agendamento-consultas1-agendamento" target="_blank">Ver Projeto</a>
+</div>
+
+</section>
+
+<section id="skills">
 <h2>Skills</h2>
 
 <div class="skills">
-<span>Testes Manuais</span>
-<span>Testes Exploratórios</span>
-<span>Automação de Testes</span>
 <span>Selenium</span>
 <span>Cypress</span>
 <span>Postman</span>
+<span>Testes Manuais</span>
+<span>Automação</span>
 <span>Java</span>
 <span>JavaScript</span>
-<span>HTML</span>
 <span>Git</span>
 </div>
 
-</section>
+<div class="progress">
+<label>Automação de Testes</label>
+<div class="bar"><span style="width:80%"></span></div>
+</div>
 
-<section class="reveal">
-<h2>Experiência</h2>
+<div class="progress">
+<label>Testes de API</label>
+<div class="bar"><span style="width:75%"></span></div>
+</div>
 
-<div class="card">
-<h3>Projeto Acadêmico - Simulador Educacional com IA</h3>
-
-<p>
-Desenvolvimento de um simulador gamificado utilizando JavaBeans e Inteligência Artificial Generativa.
-O sistema utiliza NPCs para simular interações com estudantes para treinamento de soft skills.
-</p>
-
+<div class="progress">
+<label>Testes Manuais</label>
+<div class="bar"><span style="width:90%"></span></div>
 </div>
 
 </section>
 
-<section id="contato" class="reveal">
+<section id="contato">
 <h2>Contato</h2>
 
-<p>Email: seuemail@email.com</p>
+<p>Email: tecomucciqa@gmail.com</p>
 <p>GitHub: https://github.com/Tecozada</p>
 <p>LinkedIn: https://www.linkedin.com/in/thiago-antonio-dos-santos-teco-0a337487/</p>
 
-<a class="button" href="https://github.com/Tecozada" target="_blank">Ver meu GitHub</a>
+<a class="button" href="mailto:tecomucciqa@gmail.com">Enviar Email</a>
 
 </section>
 
@@ -283,21 +325,54 @@ O sistema utiliza NPCs para simular interações com estudantes para treinamento
 
 const sections = document.querySelectorAll("section");
 
-const observer = new IntersectionObserver(entries => {
-
-entries.forEach(entry => {
-
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add("visible");
 }
-
 });
-
 },{threshold:0.15});
 
-sections.forEach(section => {
-observer.observe(section);
+sections.forEach(section=>observer.observe(section));
+
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+dx:(Math.random()-.5)*0.5,
+dy:(Math.random()-.5)*0.5
 });
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="#38bdf8";
+ctx.fill();
+
+p.x+=p.dx;
+p.y+=p.dy;
+
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
+});
+
+requestAnimationFrame(draw);
+}
+
+draw();
 
 </script>
 
